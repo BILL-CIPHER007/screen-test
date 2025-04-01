@@ -25,5 +25,11 @@ def list_files():
 def get_file(filename):
     return send_from_directory(UPLOAD_FOLDER, filename)
 
+@app.route('/gallery', methods=['GET'])
+def gallery():
+    files = os.listdir(UPLOAD_FOLDER)
+    images_html = "".join([f'<img src="/files/{file}" style="width:200px;margin:10px;">' for file in files])
+    return f"<html><body>{images_html}</body></html>"
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
