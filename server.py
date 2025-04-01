@@ -5,7 +5,7 @@ app = Flask(__name__)
 UPLOAD_FOLDER = "./uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)  
 
-@app.route('/upload', methods=['GET','POST'])
+@app.route('/upload', methods=['POST'])
 def upload_file():
     if 'file' not in request.files:
         return "No file part", 400
